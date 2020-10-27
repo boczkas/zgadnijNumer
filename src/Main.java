@@ -3,13 +3,23 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Main {
     public static void main(String[] args) {
-        // jak wylosować numer w zakresie 0 - 1000
-        // https://www.educative.io/edpresso/how-to-generate-random-numbers-in-java
         int randomNumber = ThreadLocalRandom.current().nextInt(0, 1000);
 
-        // jak wczytać liczbę z konsoli
-        // https://www.geeksforgeeks.org/ways-to-read-input-from-console-in-java/
+        System.out.println("Lets play random number!\nEnter first number:");
         Scanner in = new Scanner(System.in);
         int guessedNumber = in.nextInt();
+
+        while (guessedNumber != randomNumber) {
+
+            if (guessedNumber > randomNumber) {
+                System.out.println("This number is bigger than the random number.");
+            } else {
+                System.out.println("This number is smaller than the random number.");
+            }
+            System.out.println("Try again, enter new number!");
+            guessedNumber = in.nextInt();
+        }
+
+        System.out.println("Congratulation you've guessed the secret number! " + guessedNumber);
     }
 }
